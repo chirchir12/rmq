@@ -1,0 +1,25 @@
+name: rmq
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:4-management
+    env_file: ".env"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RMQ_USERNAME}
+      RABBITMQ_DEFAULT_PASS: ${RMQ_PASSWORD}
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "15692:15692"
+    networks:
+      - backend
+    volumes:
+      - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - rabbitmq-data:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq-data:
+
+networks:
+  backend:
+    external: true
