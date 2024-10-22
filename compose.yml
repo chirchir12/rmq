@@ -3,6 +3,7 @@ services:
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:4-management
+    restart: always
     env_file: ".env"
     environment:
       RABBITMQ_DEFAULT_USER: ${RMQ_USERNAME}
