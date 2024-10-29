@@ -5,6 +5,7 @@ services:
     image: rabbitmq:4-management
     restart: always
     env_file: ".env"
+    hostname: "rabbitmq"
     environment:
       RABBITMQ_DEFAULT_USER: ${RMQ_USERNAME}
       RABBITMQ_DEFAULT_PASS: ${RMQ_PASSWORD}
